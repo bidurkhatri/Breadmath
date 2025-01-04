@@ -10,51 +10,74 @@
     <div class="container">
         <header>
             <h1>Breadmath</h1>
-            <p>Your smart bread recipe calculator. Scale, customize, and perfect your recipes!</p>
+            <p>Scale, customize, and perfect your bread recipes with ease.</p>
         </header>
 
+        <!-- Form Section -->
         <form id="breadForm">
-            <div class="input-group">
-                <label for="flourWeight">Flour (g):</label>
+            <div class="input-group" data-ingredient="flour">
+                <label for="flourWeight">Flour</label>
                 <input type="number" id="flourWeight" placeholder="e.g., 500" required>
+                <span class="unit">g</span>
             </div>
 
-            <div class="input-group">
-                <label for="waterPercentage">Water (% of Flour):</label>
-                <input type="number" id="waterPercentage" placeholder="e.g., 70" required>
+            <div class="input-group" data-ingredient="water">
+                <label for="waterPercentage">Water</label>
+                <input type="number" id="waterPercentage" placeholder="e.g., 75" required>
+                <span class="unit">%</span>
             </div>
 
-            <div class="input-group">
-                <label for="saltPercentage">Salt (% of Flour):</label>
+            <div class="input-group" data-ingredient="milk" class="hidden">
+                <label for="milk">Milk</label>
+                <input type="number" id="milk" placeholder="e.g., 250">
+                <span class="unit">ml</span>
+            </div>
+
+            <div class="input-group" data-ingredient="salt">
+                <label for="saltPercentage">Salt</label>
                 <input type="number" id="saltPercentage" placeholder="e.g., 2" required>
+                <span class="unit">%</span>
             </div>
 
-            <div class="input-group">
-                <label for="leavenPercentage">Leaven (% of Dough):</label>
-                <input type="number" id="leavenPercentage" placeholder="e.g., 20" required>
-            </div>
-
-            <div class="input-group">
-                <label for="leavenHydration">Leaven Hydration (%):</label>
-                <input type="number" id="leavenHydration" placeholder="e.g., 100" required>
-            </div>
+            <!-- More ingredient fields can go here -->
 
             <button type="submit">Calculate</button>
         </form>
 
+        <!-- Add/Remove Ingredients Button -->
+        <button type="button" id="toggleIngredients">Add/Remove Ingredients</button>
+
+        <!-- Results Section -->
         <section id="results" class="hidden">
             <h2>Results</h2>
             <p>Total Dough Weight: <span id="doughWeightResult">-</span> g</p>
-            <p>Total Water: <span id="waterWeightResult">-</span> g</p>
-            <p>Total Salt: <span id="saltWeightResult">-</span> g</p>
-            <p>Total Leaven: <span id="leavenWeightResult">-</span> g</p>
-            <p>Total Flour: <span id="flourWeightResult">-</span> g</p>
+            <p>Total Hydration: <span id="hydrationResult">-</span> %</p>
         </section>
 
+        <!-- Footer -->
         <footer>
-            <p>by Bidur.</p>
+            <button id="resetButton">Reset Defaults</button>
         </footer>
     </div>
+
+    <!-- Add/Remove Ingredients Modal -->
+    <div id="ingredientModal" class="hidden">
+        <div class="modal-content">
+            <h3>Select Ingredients</h3>
+            <form id="ingredientForm">
+                <label><input type="checkbox" data-ingredient="flour" checked> Flour</label>
+                <label><input type="checkbox" data-ingredient="water" checked> Water</label>
+                <label><input type="checkbox" data-ingredient="milk"> Milk</label>
+                <label><input type="checkbox" data-ingredient="salt" checked> Salt</label>
+                <label><input type="checkbox" data-ingredient="yeast"> Yeast</label>
+                <label><input type="checkbox" data-ingredient="bakingPowder"> Baking Powder</label>
+                <label><input type="checkbox" data-ingredient="leaven"> Leaven</label>
+                <!-- Add more ingredients here -->
+            </form>
+            <button id="saveIngredients">OK</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
