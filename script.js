@@ -1,38 +1,32 @@
-document.getElementById('breadForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const ingredientModal = document.getElementById('ingredientModal');
+    const toggleIngredientsButton = document.getElementById('toggleIngredients');
+    const saveIngredientsButton = document.getElementById('saveIngredients');
+    const ingredientCheckboxes = document.querySelectorAll('#ingredientForm input[type="checkbox"]');
 
-    // Get inputs
-    const flourWeight = parseFloat(document.getElementById('flourWeight').value);
-    const waterPercentage = parseFloat(document.getElementById('waterPercentage').value);
-    const saltPercentage = parseFloat(document.getElementById('saltPercentage').value);
-    const leavenPercentage = parseFloat(document.getElementById('leavenPercentage').value);
-    const leavenHydration = parseFloat(document.getElementById('leavenHydration').value);
+    // Toggle modal visibility
+    toggleIngredientsButton.addEventListener('click', () => {
+        ingredientModal.classList.remove('hidden');
+    });
 
-    // Validate inputs
-    if (
-        isNaN(flourWeight) || isNaN(waterPercentage) || isNaN(saltPercentage) ||
-        isNaN(leavenPercentage) || isNaN(leavenHydration)
-    ) {
-        alert('Please fill in all fields with valid numbers.');
-        return;
-    }
+    // Save selected ingredients and update the form
+    saveIngredientsButton.addEventListener('click', () => {
+        ingredientCheckboxes.forEach(checkbox => {
+            const ingredient = checkbox.dataset.ingredient;
+            const inputGroup = document.querySelector(`.input-group[data-ingredient="${ingredient}"]`);
 
-    // Calculations
-    const leavenWeight = (leavenPercentage / 100) * flourWeight;
-    const leavenFlour = leavenWeight / (1 + (leavenHydration / 100));
-    const leavenWater = leavenWeight - leavenFlour;
+            if (checkbox.checked) {
+                if (inputGroup) inputGroup.classList.remove('hidden');
+            } else {
+                if (inputGroup) inputGroup.classList.add('hidden');
+            }
+        });
+        ingredientModal.classList.add('hidden');
+    });
 
-    const totalWater = (waterPercentage / 100) * flourWeight + leavenWater;
-    const totalSalt = (saltPercentage / 100) * flourWeight;
-    const doughWeight = flourWeight + totalWater + totalSalt;
-
-    // Update results
-    document.getElementById('doughWeightResult').textContent = doughWeight.toFixed(2);
-    document.getElementById('waterWeightResult').textContent = totalWater.toFixed(2);
-    document.getElementById('saltWeightResult').textContent = totalSalt.toFixed(2);
-    document.getElementById('leavenWeightResult').textContent = leavenWeight.toFixed(2);
-    document.getElementById('flourWeightResult').textContent = flourWeight.toFixed(2);
-
-    // Show results
-    document.getElementById('results').classList.remove('hidden');
+    // Handle Reset Button
+    document.getElementById('resetButton').addEventListener('click', () => {
+        document.getElementById('breadForm').reset();
+        document.getElementById('results').classList.add('hidden');
+    });
 });
