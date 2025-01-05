@@ -21,12 +21,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (inputGroup) inputGroup.classList.add('hidden');
             }
         });
-        ingredientModal.classList.add('hidden');
+        ingredientModal.classList.add('hidden'); // Close the modal
     });
 
     // Handle Reset Button
     document.getElementById('resetButton').addEventListener('click', () => {
         document.getElementById('breadForm').reset();
         document.getElementById('results').classList.add('hidden');
+    });
+
+    // Handle Form Submission
+    document.getElementById('breadForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const flour = parseFloat(document.getElementById('flourWeight').value);
+        const waterPercentage = parseFloat(document.getElementById('waterPercentage').value);
+        const water = (waterPercentage / 100) * flour;
+
+        document.getElementById('doughWeightResult').textContent = (flour + water).toFixed(2);
+        document.getElementById('hydrationResult').textContent = waterPercentage.toFixed(2);
+        document.getElementById('results').classList.remove('hidden');
     });
 });
