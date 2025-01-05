@@ -38,6 +38,10 @@ header h1 {
     margin-bottom: 10px;
 }
 
+.input-group.hidden {
+    display: none;
+}
+
 .input-group label {
     flex: 1;
 }
