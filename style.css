@@ -113,12 +113,6 @@ button:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-label {
-    display: block;
-    margin: 10px 0;
-    font-size: 1rem;
-}
-
 .hidden {
     display: none;
 }
