@@ -27,7 +27,7 @@
                 <span class="unit">%</span>
             </div>
 
-            <div class="input-group" data-ingredient="milk" class="hidden">
+            <div class="input-group hidden" data-ingredient="milk">
                 <label for="milk">Milk</label>
                 <input type="number" id="milk" placeholder="e.g., 250">
                 <span class="unit">ml</span>
@@ -38,8 +38,6 @@
                 <input type="number" id="saltPercentage" placeholder="e.g., 2" required>
                 <span class="unit">%</span>
             </div>
-
-            <!-- More ingredient fields can go here -->
 
             <button type="submit">Calculate</button>
         </form>
@@ -69,10 +67,6 @@
                 <label><input type="checkbox" data-ingredient="water" checked> Water</label>
                 <label><input type="checkbox" data-ingredient="milk"> Milk</label>
                 <label><input type="checkbox" data-ingredient="salt" checked> Salt</label>
-                <label><input type="checkbox" data-ingredient="yeast"> Yeast</label>
-                <label><input type="checkbox" data-ingredient="bakingPowder"> Baking Powder</label>
-                <label><input type="checkbox" data-ingredient="leaven"> Leaven</label>
-                <!-- Add more ingredients here -->
             </form>
             <button id="saveIngredients">OK</button>
         </div>
