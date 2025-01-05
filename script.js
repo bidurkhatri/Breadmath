@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (checkbox.checked) {
                 if (inputGroup) inputGroup.classList.remove('hidden');
             } else {
-                if (inputGroup) inputGroup.classList.add('hidden');
+                if (inputGroup)
+
+                inputGroup.classList.add('hidden');
             }
         });
 
@@ -31,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal when clicking outside the modal content
     window.addEventListener('click', (e) => {
         if (e.target === ingredientModal) {
-            ingredientModal.classList.add('hidden'); // Close the modal
+            ingredientModal.classList.add('hidden'); // Hide the modal
         }
     });
 
     // Handle Reset Button
     document.getElementById('resetButton').addEventListener('click', () => {
-        document.getElementById('breadForm').reset();
-        document.getElementById('results').classList.add('hidden');
+        document.getElementById('breadForm').reset(); // Reset the form
+        document.getElementById('results').classList.add('hidden'); // Hide results
     });
 
     // Handle Form Submission
